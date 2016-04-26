@@ -8,21 +8,27 @@
  */
 #ifndef TSTNODE_HPP
 #define TSTNODE_HPP
+
+#include <string>
+
 typedef unsigned char letter;
+using namespace std;
+
 class TSTNode
 {
-private:
+public:
     letter symbol;
     int count;
     TSTNode* down;
     TSTNode* right;
     TSTNode* left;
-public:
+
 	TSTNode(letter symbol,
             int count, 
             TSTNode* down = 0, 
             TSTNode* right = 0, 
-            TSTNode* left = 0): { symbol = symbol; count = count;}
+            TSTNode* left = 0): 
+            symbol(symbol), count(count), down(down), right(right), left(left){}
 	
 	
 };

@@ -10,6 +10,7 @@
 #ifndef TSTTREE_HPP
 #define TSTTREE_HPP
 
+#include <string>
 #include "TSTNode.hpp"
 
 class TSTTree
@@ -25,7 +26,8 @@ private:
     /**
       * the helper method used to make insert method.
       */
-    void insertDown(TSTNode* node, const string& word, const int& num);
+    TSTNode* insertDown(TSTNode* node, const string& word, 
+                    const int& num, int index);
 public:
     TSTTree();
     ~TSTTree();
