@@ -16,6 +16,11 @@ class TSTTree
 {
 private:
     TSTNode* root;
+    
+    /**
+      * the helper method used to make insert method.
+      */
+    void insertDown(TSTNode* node, const string& word, const int& num);
 public:
     TSTTree();
     ~TSTTree();
@@ -33,5 +38,7 @@ public:
       * the word, otherwise update the number it associates with.
       */
     void insert(const string& word, const int& num);
+
+
 };
 #endif 
