@@ -1,5 +1,8 @@
 #include "TSTTree.hpp"
 
+TSTTree::~TSTTree() {
+    DeleteAll(root);
+}
 /** 
   * this is the find method that takes a string, and find in the 
   * ternary search tree. If the string is in the tree, return true, 
@@ -38,40 +41,50 @@ bool TSTTree::find(const string& word) const {
   * the word, otherwise update the number it associates with.
   */
 void TSTTree::insert(const string& word, const int& num) {
-    TSTNode* temp = this->root;
-    TSTNode* pretmp = temp;
-    int size = word.length();
-    int counter = 0;
-
-    while (counter < size) {
-        if (temp == 0)
-        {
-            string str = word.substr(counter, size-counter);
-            insertDown(pretmp, str, num);
-            return;
-        }
-
-        if (word[counter] == temp->symbol)
-        {
-            pretmp = temp;
-            temp = temp->down;
-            counter++;
-        }else if (word[counter] < temp->symbol)
-        {
-            pretmp = temp;
-            temp = temp->right;
-        }else{
-            pretmp = temp;
-            temp = temp->left;
-        }
-    }
-
-    pretmp->count = num;
+    insertDown(this->root, word, num, 0);
 }
 
 /**
   * the helper method used to make insert method.
   */
-void TSTTree::insertDown(TSTNode* node, const string& word, const int& num) {
+TSTNode* TSTTree::insertDown(TSTNode* node, const string& word, 
+                        const int& num, int index) {
+    if (node == 0)
+    {
+        node = new TSTNode(word[index], 0);
+    }
+
+    if (node->symbol > word[0])
+    {
+        node->left = insertDown(node->left, word, num, index);
+    }else if (node->symbol < word[0])
+    {
+        node->right = insertDown(node->right, word, num, index);
+    }else if (index < word.length()-1)
+    {
+        node->down = insertDown(node->down, word, num, index+1);
+    }else{
+        node->count = num;
+    }
+
+    return node;
     
+}
+
+/**
+  * The helper method for destructor
+  */
+static void DeleteAll(TSTNode* node) {
+    if (node == 0)
+    {
+        return;
+    }
+
+    DeleteAll(node->left);
+
+    DeleteAll(node->right);
+
+    DeleteAll(node->down);
+
+    delete node;
 }

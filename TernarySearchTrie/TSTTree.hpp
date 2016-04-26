@@ -18,6 +18,11 @@ private:
     TSTNode* root;
     
     /**
+      * The helper method for destructor
+      */
+    static void DeleteAll(TSTNode* node);
+    
+    /**
       * the helper method used to make insert method.
       */
     void insertDown(TSTNode* node, const string& word, const int& num);
