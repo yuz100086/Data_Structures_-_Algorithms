@@ -29,7 +29,7 @@ private:
     TSTNode* insertDown(TSTNode* node, const string& word, 
                     const int& num, int index);
 public:
-    TSTTree();
+    TSTTree() : root(0) {}
     ~TSTTree();
     
     /** 

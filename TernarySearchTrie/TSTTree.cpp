@@ -9,7 +9,7 @@ TSTTree::~TSTTree() {
   * otherwise false.
   */
 bool TSTTree::find(const string& word) const {
-    TSTNode* temp = this->root;
+    TSTNode* temp = root;
     int size = word.length();
     int counter = 0;
 
@@ -41,7 +41,7 @@ bool TSTTree::find(const string& word) const {
   * the word, otherwise update the number it associates with.
   */
 void TSTTree::insert(const string& word, const int& num) {
-    insertDown(this->root, word, num, 0);
+    root = insertDown(root, word, num, 0);
 }
 
 /**
@@ -54,10 +54,10 @@ TSTNode* TSTTree::insertDown(TSTNode* node, const string& word,
         node = new TSTNode(word[index], 0);
     }
 
-    if (node->symbol > word[0])
+    if (node->symbol > word[index])
     {
         node->left = insertDown(node->left, word, num, index);
-    }else if (node->symbol < word[0])
+    }else if (node->symbol < word[index])
     {
         node->right = insertDown(node->right, word, num, index);
     }else if (index < word.length()-1)
@@ -74,7 +74,7 @@ TSTNode* TSTTree::insertDown(TSTNode* node, const string& word,
 /**
   * The helper method for destructor
   */
-static void DeleteAll(TSTNode* node) {
+void TSTTree::DeleteAll(TSTNode* node) {
     if (node == 0)
     {
         return;

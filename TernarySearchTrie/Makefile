@@ -4,13 +4,12 @@ cc=g++
 CXXFLAGS=-std=c++11 -g
 LDFLAGS=-g
 
-all: TSTMain
+all: TST
 
-TSTMain: TSTTree.o TSTNode.o
+TST: TSTTree.o
 
-TSTTree.o: TSTTree.hpp
+TSTTree.o: TSTTree.hpp TSTNode.hpp
 
-TSTNode.o: TSTNode.hpp
 
 clean: 
 	rm -f TSTMain *.o core.*
