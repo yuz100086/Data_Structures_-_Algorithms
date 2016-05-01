@@ -9,8 +9,10 @@ DLNode<Data>* DLNode::getPre() {
 }
 
 bool DLNode::operator<(DLNode<Data>* other) {
-    if (/* condition */)
+    if (this->data < other->data)
     {
-        /* code */
+        return 1;
     }
+
+    return 0;
 }
