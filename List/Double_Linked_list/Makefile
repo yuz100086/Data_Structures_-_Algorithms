@@ -1,14 +1,12 @@
 #this is a Makefile for double link list
 
 CC=g++
-CXXFLAGS=-std=c++11 -g
+CXXFLAGS= -g -Wall -std=c++11 -g
 LDFLAGS=-g
 
-Main: DLTree.o DLNode.o
+main: main.o
 
-DLTree.o: DLTree.hpp DLNode.hpp
-
-DLNode.o: DLNode.hpp
+main.o: DLTree.hpp DLNode.hpp Node.hpp
 
 clean:
-    -f rm Main *.o core*
+	rm -f Main *.o core*
