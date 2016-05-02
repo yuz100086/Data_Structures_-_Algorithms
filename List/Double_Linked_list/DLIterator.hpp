@@ -1,4 +1,4 @@
-##ifndef DLITERATOR_HPP
+#ifndef DLITERATOR_HPP
 #define DLITERATOR_HPP
 
 class DLIterator

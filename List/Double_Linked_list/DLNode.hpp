@@ -1,4 +1,4 @@
-##ifndef DLNODE_HPP
+#ifndef DLNODE_HPP
 #define DLNODE_HPP
 
 template <typename Data>
