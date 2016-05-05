@@ -1,17 +1,23 @@
 #include "CNode.hpp"
 
-Data getData() {
-
+Data CNode::getData() {
+    return this->elem;
 }
 
-CNode<Data>* getLeft() {
-
+CNode<Data>* CNode::getLeft() {
+    return this->left;
 }
 
-CNode<Data>* getRight() {
+CNode<Data>* CNode::getRight() {
+    return this->right;
 
 }
     
-bool operator<(CNode<Data>* other) {
+bool CNode::operator<(CNode<Data>* other) {
+    if (this->elem < other->getData())
+    {
+        return 1;
+    }
 
+    return 0;
 }
